@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Komik RBT Tahun 6 — Unit 2 Asas Robotik</title>
+<style>
+:root{--ink:#172d4b;--blue:#1679c8;--green:#207a51;--yellow:#ffe16a;--pink:#ff6d9a;--paper:#fffdf6}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Trebuchet MS",Arial,sans-serif;color:var(--ink);background:#eaf5ff;background-image:radial-gradient(#c5dff5 1.4px,transparent 1.4px);background-size:18px 18px}
+header{padding:30px 16px 35px;text-align:center;color:#fff;background:linear-gradient(135deg,#124a83,#2196d2);border-bottom:8px solid var(--yellow);position:relative;overflow:hidden}
+header:before,header:after{position:absolute;top:5px;font-size:65px;opacity:.25}header:before{content:"⚙️";left:4%}header:after{content:"🤖";right:4%}
+.pill{display:inline-block;background:var(--yellow);color:var(--ink);border:3px solid var(--ink);border-radius:99px;padding:7px 16px;font-weight:900}
+h1{font-size:clamp(2rem,6vw,4rem);line-height:1.04;margin:15px 0 8px;text-shadow:3px 4px 0 #10436d}header p{margin:0;font-size:1.1rem}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:13px;background:#fff;position:sticky;top:0;z-index:5;box-shadow:0 3px 8px #172d4b22}
+nav a{padding:8px 12px;border:2px solid var(--ink);border-radius:99px;background:#e1f4ff;text-decoration:none;color:var(--ink);font-weight:900;font-size:.9rem}
+main{max-width:1100px;margin:auto;padding:18px 14px 45px}.chapter{margin:20px 0 28px;scroll-margin-top:90px}
+.heading{display:flex;align-items:center;gap:10px;color:#fff;background:var(--blue);padding:12px 16px;border:3px solid var(--ink);border-radius:17px;box-shadow:5px 5px 0 var(--ink);font-size:clamp(1.2rem,3vw,1.9rem);font-weight:1000;margin:0 0 15px}
+.number{display:grid;place-items:center;min-width:42px;height:42px;background:var(--yellow);border:3px solid var(--ink);border-radius:50%;color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.panel{background:var(--paper);border:3px solid var(--ink);border-radius:19px;padding:16px;box-shadow:5px 5px 0 var(--ink)}
+.panel h3{margin:0 0 8px;color:#155a40;font-size:1.18rem}.panel p,.panel li{line-height:1.5}.character{font-size:2.5rem;float:left;margin:0 10px 3px 0}
+.bubble{padding:12px 14px;background:#fff1bf;border:2px solid var(--ink);border-radius:17px;margin:10px 0;line-height:1.45}.tag{display:inline-block;padding:4px 8px;border-radius:8px;background:#dff5c9;font-size:.86rem;font-weight:900}
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:stretch;margin:12px 0}.flowbox{border:2px solid var(--ink);border-radius:14px;padding:12px;text-align:center;font-weight:900;background:#e5f5ff}.flowbox:nth-child(2){background:#fff0c4}.flowbox:nth-child(3){background:#e4f8d9}.flowbox span{display:block;font-size:2rem}.arrow{text-align:center;font-weight:1000;font-size:1.4rem}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.part{background:#f8fcff;border:2px solid #67b7e8;border-radius:15px;padding:12px;text-align:center}.part .emoji{font-size:2.4rem}.part h4{margin:5px 0}.part p{font-size:.92rem;margin:5px 0;line-height:1.4}
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.step{border:2px solid var(--ink);border-radius:16px;padding:14px;background:#fff}.step h3{margin:0 0 8px}.step:nth-child(1){background:#fff7d8}.step:nth-child(2){background:#eaf5ff}.step:nth-child(3){background:#e9f9df}.step:nth-child(4){background:#fff0f5}
+.note{background:#fff0c7;border-left:7px solid #f2a51d;padding:11px 13px;border-radius:10px;margin-top:10px;line-height:1.5}
+.chart{background:#f8fbff;border:2px dashed #3487bf;border-radius:16px;padding:14px;text-align:center}.chartbox{display:inline-block;max-width:100%;padding:10px 14px;background:#e2f4ff;border:2px solid var(--ink);border-radius:10px;font-weight:900;margin:5px}.decision{background:#fff0c5}.yesno{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.branch{flex:1;min-width:180px;padding:12px;border:2px solid var(--ink);border-radius:13px;background:#e8f7dc}.branch.no{background:#e5f3ff}
+.quiz .q{border:2px solid var(--ink);border-radius:13px;overflow:hidden;margin:10px 0;background:#fff}.q button{width:100%;padding:13px;text-align:left;font:inherit;font-weight:900;color:var(--ink);background:#dff1ff;border:0;cursor:pointer}.answer{display:none;padding:12px 14px;line-height:1.5}.q.open .answer{display:block}.small{font-size:.9rem;color:#4d6279}
+footer{text-align:center;background:#124a35;color:#fff;border-top:8px solid var(--yellow);padding:25px 14px;font-weight:900;font-size:1.15rem}
+@media(max-width:680px){.grid,.steps{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}nav{position:static}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}}
+@media(max-width:420px){.cards{grid-template-columns:1fr}.panel{padding:13px}}
+</style>
+</head>
+<body>
+<header><span class="pill">KOMIK DIGITAL • RBT TAHUN 6</span><h1>🤖 ASAS ROBOTIK ⚙️</h1><p>Unit 2 · Misi Robot Pintar bersama Aina dan Amir!</p></header>
+<nav><a href="#intro">📘 Pengenalan</a><a href="#sistem">🔄 Sistem Robotik</a><a href="#komponen">🧩 Komponen</a><a href="#reka">🛠️ Reka Bentuk</a><a href="#carta">💻 Carta Alir</a><a href="#kuiz">⭐ Kuiz</a></nav>
+<main>
+<section class="chapter" id="intro"><h2 class="heading"><span class="number">1</span> Jom Kenali Robotik!</h2>
+<div class="grid">
+<article class="panel"><div class="character">👧🏻</div><h3>Aina ingin tahu…</h3><div class="bubble">“Amir, apa maksud robotik?”</div><div class="character">👦🏻</div><div class="bubble">“Robotik ialah bidang sains dan teknologi tentang reka bentuk, pembinaan, pengaturcaraan dan penggunaan robot!”</div><p><span class="tag">FUNGSI ROBOT</span></p><p>🤖 Robot membantu manusia melakukan kerja berulang, kerja berat, tugas berbahaya dan kerja yang memerlukan ketepatan tinggi.</p></article>
+<article class="panel"><h3>🏭 Di mana robot digunakan?</h3><div class="flow"><div class="flowbox"><span>🏭</span>Kilang</div><div class="flowbox"><span>🏥</span>Hospital</div><div class="flowbox"><span>🏡</span>Rumah</div></div><div class="bubble">“Robot boleh membantu manusia, tetapi kita tetap perlu mereka bentuk dan mengawalnya dengan betul!”</div></article>
+</div></section>
+<section class="chapter" id="sistem"><h2 class="heading"><span class="number">2</span> Tiga Sistem Utama Robotik</h2>
+<article class="panel"><p>Robot berfungsi melalui tiga bahagian yang bekerjasama. Ikut perjalanan maklumat ini!</p><div class="flow"><div class="flowbox"><span>👁️</span><b>INPUT</b><br>Sensor / Penderia<br><small>Mengesan keadaan</small></div><div class="flowbox"><span>🧠</span><b>PROSES</b><br>Papan mikropengawal<br><small>Memproses arahan</small></div><div class="flowbox"><span>🦾</span><b>OUTPUT</b><br>Aktuator / Komponen<br><small>Melakukan tindakan</small></div></div><div class="bubble">Contoh: sensor mengesan halangan → mikropengawal memproses maklumat → motor menggerakkan robot menjauhi halangan.</div></article></section>
+<section class="chapter" id="komponen"><h2 class="heading"><span class="number">3</span> Kenali Komponen Robotik</h2>
+<h3 style="margin:14px 3px">🧠 A. Papan mikropengawal — “otak” robot</h3><div class="grid"><article class="panel"><div style="font-size:3rem;text-align:center">🧠💻</div><p>Papan mikropengawal mempunyai cip untuk menyimpan dan menjalankan atur cara. Ia memproses input dan mengawal output.</p></article><article class="panel"><h3>👁️ B. Sensor / Penderia (Input)</h3><ul><li>📡 <b>Ultrasonik:</b> mengesan jarak atau halangan menggunakan gelombang bunyi.</li><li>🌱 <b>Kelembapan:</b> mengesan tahap kelembapan tanah.</li><li>💡 <b>Cahaya (LDR):</b> mengesan tahap cerah atau gelap.</li><li>👆 <b>Sentuh / suis mikro:</b> mengesan sentuhan atau tekanan.</li></ul></article></div>
+<h3 style="margin:18px 3px 10px">🦾 C. Aktuator dan output (Tindakan)</h3><div class="cards">
+<div class="part"><div class="emoji">🔄</div><h4>Motor servo</h4><p>Bergerak ke sudut tertentu untuk menggerakkan lengan, penutup atau pintu.</p></div>
+<div class="part"><div class="emoji">🔊</div><h4>Pembaz (Buzzer)</h4><p>Menghasilkan bunyi atau amaran.</p></div>
+<div class="part"><div class="emoji">💡</div><h4>LED / LED matriks</h4><p>Memaparkan cahaya, simbol, huruf atau nombor.</p></div>
+<div class="part"><div class="emoji">⚙️</div><h4>Motor DC</h4><p>Menukarkan tenaga elektrik kepada putaran, contohnya roda robot.</p></div>
+<div class="part"><div class="emoji">🔋</div><h4>Bateri</h4><p>Membekalkan tenaga elektrik kepada sistem robotik.</p></div>
+<div class="part"><div class="emoji">🔌</div><h4>Pemegang bateri</h4><p>Memegang bateri supaya bekalan kuasa dapat disambungkan.</p></div>
+</div><div class="note"><b>Tip ingatan:</b> Sensor = mengesan. Mikropengawal = berfikir mengikut atur cara. Output = bertindak.</div></section>
+<section class="chapter" id="reka"><h2 class="heading"><span class="number">4</span> Misi Membina Robot!</h2><p>Aina dan Amir mahu membina Robot Penjaga Air Tanaman. Mereka ikut langkah berikut.</p>
+<div class="steps">
+<article class="step"><h3>💡 1. Kenal pasti masalah</h3><p>Tentukan keperluan dan fungsi robot. Contoh: membantu memantau kelembapan tanah tanaman.</p></article>
+<article class="step"><h3>✏️ 2. Lakarkan reka bentuk</h3><p>Lukis beberapa idea dan labelkan komponen seperti sensor, mikropengawal dan motor servo.</p></article>
+<article class="step"><h3>⭐ 3. Pilih lakaran terbaik</h3><p>Bandingkan lakaran, pilih yang sesuai dan buat penambahbaikan.</p></article>
+<article class="step"><h3>🧰 4. Sediakan bahan</h3><p>Pilih komponen elektronik serta bahan binaan seperti kadbod, perspek atau impra board.</p></article>
+<article class="step"><h3>💻 5. Bina pengaturcaraan</h3><p>Gunakan perisian pengaturcaraan berasaskan blok untuk mengawal input dan output.</p></article>
+<article class="step"><h3>🔧 6. Pasang dan uji litar</h3><p>Sambungkan komponen dan wayar mengikut litar. Muat naik atur cara ke papan mikropengawal.</p></article>
+<article class="step"><h3>🧪 7. Uji dan kemaskan</h3><p>Pastikan robot berfungsi. Baiki ralat pada perkakasan atau pengaturcaraan jika perlu.</p></article>
+<article class="step"><h3>🎉 Misi selesai!</h3><p>Robot yang diuji dengan baik lebih bersedia untuk membantu pengguna.</p></article>
+</div></section>
+<section class="chapter" id="carta"><h2 class="heading"><span class="number">5</span> Carta Alir: Robot Penjaga Air Tanaman</h2><article class="panel chart">
+<div class="chartbox">▶ MULA</div><div class="arrow">⬇</div><div class="chartbox">🌱 Kesan kelembapan tanah</div><div class="arrow">⬇</div><div class="chartbox decision">❓ Adakah tanah kering?</div><div class="yesno"><div class="branch"><b>✅ YA</b><p>Motor servo membuka aliran air (jika dipasang pada sistem) dan pembaz berbunyi.</p></div><div class="branch no"><b>❎ TIDAK</b><p>Motor servo menutup aliran air dan LED memaparkan “OK”.</p></div></div><div class="arrow">⬇</div><div class="chartbox">🏁 TAMAT / Ulang pemantauan mengikut atur cara</div>
+<p class="small">Nota: Ini contoh konsep kawalan. Fungsi sebenar bergantung pada komponen dan pengaturcaraan yang digunakan.</p></article></section>
+<section class="chapter quiz" id="kuiz"><h2 class="heading"><span class="number">★</span> Kuiz Komik: Uji Minda!</h2><p class="small">Klik soalan untuk melihat jawapan.</p>
+<div class="q"><button onclick="toggleAnswer(this)">1. Apakah maksud robotik? ＋</button><div class="answer">Bidang sains dan teknologi yang merangkumi reka bentuk, pembinaan, pengaturcaraan dan penggunaan robot.</div></div>
+<div class="q"><button onclick="toggleAnswer(this)">2. Apakah tiga bahagian utama sistem robotik? ＋</button><div class="answer">Input (sensor), proses (papan mikropengawal) dan output (aktuator atau komponen fizikal).</div></div>
+<div class="q"><button onclick="toggleAnswer(this)">3. Apakah fungsi papan mikropengawal? ＋</button><div class="answer">Memproses isyarat input berdasarkan atur cara dan menghantar arahan kepada output.</div></div>
+<div class="q"><button onclick="toggleAnswer(this)">4. Nyatakan satu perbezaan input dengan output. ＋</button><div class="answer">Input mengumpul maklumat daripada persekitaran, manakala output melakukan tindakan berdasarkan arahan.</div></div>
+<div class="q"><button onclick="toggleAnswer(this)">5. Mengapa pengaturcaraan berasaskan blok sesuai untuk murid? ＋</button><div class="answer">Susunan blok visual lebih mudah dilihat dan difahami oleh murid berbanding menulis kod berasaskan teks.</div></div>
+<div class="q"><button onclick="toggleAnswer(this)">6. Apakah fungsi sensor ultrasonik? ＋</button><div class="answer">Mengesan jarak atau kehadiran halangan menggunakan gelombang bunyi.</div></div>
+</section>
+</main><footer>🤖 FIKIR, REKA, BINA DAN UJI! ⚙️<br><span style="font-weight:400;font-size:.9rem">Komik pembelajaran RBT Tahun 6 · Unit 2: Asas Robotik</span></footer>
+<script>function toggleAnswer(button){const q=button.parentElement;q.classList.toggle('open');button.textContent=button.textContent.replace(/[＋−]$/,q.classList.contains('open')?'−':'＋');}</script>
+</body></html>
